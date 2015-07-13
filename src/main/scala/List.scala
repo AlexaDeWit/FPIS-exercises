@@ -80,4 +80,12 @@ object List {
     foldLeft[A,List[A]]( l, Nil)( (xs, x ) => Cons( x, xs ) ) 
   }
 
+  //Holy crap can this stack overflow
+  def flatten[A]( l: List[List[A]] ): List[A] = {
+    l match {
+      case Nil => Nil
+      case Cons( x, xs ) => foldRight( x, flatten(xs) )( Cons.apply _ )
+    }
+  }
+
 }

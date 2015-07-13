@@ -55,4 +55,9 @@ class ListSpec extends FlatSpec {
     assert( List.reverse( List(1,2,3,4) ) == List(4,3,2,1) )
   }
 
+  "flatten" should "concatenate a list of lists" in {
+    assert( List.flatten( List(List(1,2,3), List(4,5,6), List(7,8,9)) ) ==
+      List(1,2,3,4,5,6,7,8,9) )
+  }
+
 }
