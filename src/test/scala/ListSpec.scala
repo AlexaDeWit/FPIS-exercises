@@ -63,5 +63,8 @@ class ListSpec extends FlatSpec {
   "map" should "map to a new list" in {
     assert( List.map( List(1,2,3,4) )( _ + 1 ) == List(2,3,4,5) )
   }
-
+  
+  "filter" should "be able to remove all odd numbers from a list" in {
+    assert( List.filter( List(1,2,3,4,5))( _ % 2 == 0 ) == List(2,4) )
+  }
 }
