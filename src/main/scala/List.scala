@@ -97,4 +97,15 @@ object List {
     foldRight[A,List[A]]( l, Nil )( (x, xs) => { if( p(x) ) Cons( x, xs ) else xs } )
   }
 
+  def flatMap[A,B]( l: List[A] )( f: A => List[B] ): List[B] = {
+    flatten( map( l )( f ) )
+  }
+
+  def zip2[A,B,C]( l1: List[A], l2: List[B] )( f: (A,B) => C ): List[C] = {
+    ( l1, l2 ) match {
+      case ( Nil, _ ) | ( _, Nil ) => Nil
+      case ( Cons( x, xs ), Cons( y, ys ) ) =>  Cons( f( x, y ), zip2( xs, ys )(f) )
+    }
+  }
+
 }

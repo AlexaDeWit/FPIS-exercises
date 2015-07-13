@@ -67,4 +67,8 @@ class ListSpec extends FlatSpec {
   "filter" should "be able to remove all odd numbers from a list" in {
     assert( List.filter( List(1,2,3,4,5))( _ % 2 == 0 ) == List(2,4) )
   }
+
+  "zip2" should "be able to sum two lists of integers" in {
+    assert( List.zip2( List(1,2,3), List(3,4,5) )( _ + _ ) == List(4,6,8) )
+  }
 }
