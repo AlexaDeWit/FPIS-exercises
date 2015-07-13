@@ -51,4 +51,8 @@ class ListSpec extends FlatSpec {
     assert( List.foldLeft( List(2,4,6), 1 )( (a,b) => a * b) == 48 )
   }
 
+  "reverse" should "reverse a list correctly. We using fold here." in {
+    assert( List.reverse( List(1,2,3,4) ) == List(4,3,2,1) )
+  }
+
 }
