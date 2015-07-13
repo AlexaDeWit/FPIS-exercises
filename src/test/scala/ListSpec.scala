@@ -60,4 +60,8 @@ class ListSpec extends FlatSpec {
       List(1,2,3,4,5,6,7,8,9) )
   }
 
+  "map" should "map to a new list" in {
+    assert( List.map( List(1,2,3,4) )( _ + 1 ) == List(2,3,4,5) )
+  }
+
 }

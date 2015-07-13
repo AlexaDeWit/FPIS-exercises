@@ -88,4 +88,9 @@ object List {
     }
   }
 
+  //Mahp
+  def map[A,B]( l: List[A] )( f: A => B ): List[B] = {
+    foldRight[A,List[B]]( l, Nil )( ( x, xs ) =>  Cons( f( x ), xs )  )
+  }
+
 }
