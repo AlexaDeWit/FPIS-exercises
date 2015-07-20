@@ -35,5 +35,16 @@ class OptionSpec extends FlatSpec {
     assert( five.getOrElse( 10 ) == 5 )
   }
 
+  "or else" should "return the original if Some" in {
+    val opt: Option[Int] = Some(1)
+    assert( opt.orElse( Some(2) ) == opt )
+  }
+
+  "or else" should "return the alternative if None" in {
+    val opt: Option[Int] = None
+    val alt: Option[Int] = Some(1)
+    assert( opt.orElse( alt ) == alt )
+  }
+
 }
 

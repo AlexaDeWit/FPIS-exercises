@@ -15,6 +15,13 @@ sealed trait Option[+A] {
     }
   }
 
+  def orElse[B >: A]( alt: => Option[B] ): Option[B] = {
+    this match {
+      case Some( _ ) => this
+      case None      => alt
+    }
+  }
+
   def getOrElse[B >: A]( b: B ): B = {
     this match {
       case Some( a ) => a
