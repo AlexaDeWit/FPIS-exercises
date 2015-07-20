@@ -13,10 +13,7 @@ object Tree {
 
 
   def max( t: Tree[Int] ) : Int = {
-    t match {
-      case Leaf( v ) => v
-      case Branch( l, r ) => max( l ).max( max( r ) )
-    }
+    foldRight( t, Int.MinValue )( _ max _ ) 
   }
 
   def depth[A]( t: Tree[A] ) : Int = {
