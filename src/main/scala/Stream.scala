@@ -6,7 +6,7 @@ trait Stream[+A] {
 
   def toList: List[A] = {
     def go( stream: Stream[A] ): List[A] = {
-      this.uncons match {
+      uncons match {
         case Some(( a, as )) => Cons( a, go( as ) )
         case None            => Nil
       }
