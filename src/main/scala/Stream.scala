@@ -3,6 +3,16 @@ package fpinscala.datastructures
 trait Stream[+A] {
   def uncons: Option[(A, Stream[A])]
   def isEmpty: Boolean = uncons.isEmpty
+
+  def toList: List[A] = {
+    def go( stream: Stream[A] ): List[A] = {
+      this.uncons match {
+        case Some(( a, as )) => Cons( a, go( as ) )
+        case None            => Nil
+      }
+    }
+    go( this )
+  }
 }
 
 object Stream {
@@ -20,4 +30,5 @@ object Stream {
     if (as.isEmpty) empty
     else cons(as.head, apply(as.tail: _*))
   }
+
 }
