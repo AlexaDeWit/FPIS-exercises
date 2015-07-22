@@ -28,6 +28,13 @@ sealed trait Option[+A] {
       case None      => b
     }
   }
+
+  def isEmpty[A] = {
+    this match {
+      case Some( _ ) => false
+      case None      => true
+    }
+  }
 }
 case class Some[A](get: A) extends Option[A]
 case object None extends Option[Nothing]
